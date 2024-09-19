@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.example.model.repository.OrdersRepository">
+    <resultMap id="orderResultMap" type="org.example.model.dto.OrdersDTO">
+        <id property="orderId" column="order_id"/>
+        <result property="email" column="email"/>
+        <result property="address" column="address"/>
+        <result property="postCode" column="postcode"/>
+        <result property="orderStatus" column="order_status"/>
+        <result property="created_at" column="created_at"/>
+        <result property="updated_at" column="updated_at"/> <!-- createdAt 명시적 매핑 -->
+    </resultMap>
+
+    <insert id="insert" parameterType="org.example.model.dto.OrdersDTO" useGeneratedKeys="true" keyProperty="orderId" >
+        Insert into orders(email, address, postcode, order_status, created_at)
+        values (#{email}, #{address}, #{postCode}, #{orderStatus}, #{created_at})
+    </insert>
+
+    <select id="selectAll" resultType="org.example.model.dto.OrdersDTO" resultMap="orderResultMap">
+        select * from orders
+    </select>
+
+    <update id="update" parameterType="org.example.model.dto.OrdersDTO">
+        update orders set email = #{email}, address= #{address}, postcode=#{postCode}, updated_at=#{updated_at}
+        where order_id = #{orderId}
+    </update>
+
+    <delete id="delete" parameterType="int">
+        delete from orders where order_id = #{id}
+    </delete>
+</mapper>
