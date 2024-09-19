@@ -225,7 +225,9 @@ public class OrdersDTO {
 ### 추가로 고민해볼 것들 
 - 모든 테이블 update 진행 시 사용자가 update를 한 곳 (어느 부분을 해도) 동적으로 update가 진행되게 하기
 - LomBok 활용과 패키징 신경쓰기
-- user 관리 기능 
+- user 관리 기능
+- Junit을 활용하여 CT 진행하기
+
 
 
  
